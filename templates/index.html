@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Handwritten Digit Recognition</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1 class="mt-5">Handwritten Digit Recognition</h1>
+
+        {% if digit %}
+        <div class="mt-4">
+            <h2>Prediction Result</h2>
+            <div class="alert alert-success">
+                <strong>Recognized Digit:</strong> {{ digit }}
+            </div>
+            <a href="/" class="btn btn-primary">Upload Another Digit</a>
+        </div>
+        {% else %}
+        <div class="mt-4">
+            <h2>Upload a Handwritten Digit</h2>
+            <form action="/upload" method="post" enctype="multipart/form-data">
+                <div class="form-group">
+                    <input type="file" class="form-control-file" name="file">
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+        </div>
+        {% endif %}
+    </div>
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>
